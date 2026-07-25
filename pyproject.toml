@@ -1,0 +1,34 @@
+[project]
+name = "wenan"
+version = "0.1.0"
+description = "Scenic narration multi-platform content assistant backend"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.116.0",
+    "json-repair>=0.61.6",
+    "langchain>=1.3.14",
+    "langchain-openai>=1.0.0",
+    "langgraph-checkpoint-sqlite>=3.0.0",
+    "python-dotenv>=1.2.0",
+    "uvicorn[standard]>=0.35.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.0",
+]
+
+[project.scripts]
+wenan-api = "wenan_backend.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["wenan_backend"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
