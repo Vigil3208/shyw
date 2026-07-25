@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成记录 · 山河有文</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./assets/wenan.css" />
+    <script src="./assets/wenan.js" defer></script>
+    <script src="./assets/history.js" defer></script>
+  </head>
+  <body>
+    <header id="topnav"></header>
+
+    <main class="page">
+      <section class="wrap">
+        <div class="hs-head">
+          <div class="sec-head" style="margin-bottom:0">
+            <div class="seal seal-lg">錄</div>
+            <div>
+              <div class="sec-kicker">HISTORY · 生成记录</div>
+              <h2 class="sec-title">生成记录</h2>
+            </div>
+          </div>
+
+          <div class="hs-toolbar">
+            <div class="hs-search">
+              <input type="text" id="hs-q" placeholder="搜索景区或讲解词关键词…" />
+            </div>
+            <div class="hs-filters" id="hs-filters"></div>
+          </div>
+        </div>
+
+        <div class="hs-list" id="hs-list"></div>
+
+        <div class="hs-empty" id="hs-empty" hidden>
+          <div class="seal seal-xl">合</div>
+          <h3>还没有生成记录</h3>
+          <p>去粘贴第一段讲解词，让权威内容说年轻人的话。</p>
+          <a class="btn btn-primary" href="index.html">新建生成 →</a>
+        </div>
+
+        <div class="loading-block" id="hs-loading">
+          <div class="seal seal-lg">錄</div>
+          <p>正在读取生成记录…</p>
+        </div>
+        <p class="error-box" id="hs-error" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="f-brand"><span class="seal" style="width:24px;height:24px;font-size:12px;border-radius:6px">山</span><span>山河有文</span></div>
+        <div>文旅 × AI ｜ 风格可以放飞，事实寸步不让</div>
+      </div>
+    </footer>
+  </body>
+</html>
