@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设置 · 山河有文</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./assets/wenan.css" />
+    <script src="./assets/wenan.js" defer></script>
+    <script src="./assets/settings.js" defer></script>
+  </head>
+  <body>
+    <header id="topnav"></header>
+
+    <main class="page">
+      <section class="wrap" style="padding-top: 48px">
+        <div class="sec-head" style="margin-bottom:40px">
+          <div class="seal seal-lg">設</div>
+          <div>
+            <div class="sec-kicker">SETTINGS · 设置</div>
+            <h2 class="sec-title">设置</h2>
+            <p class="sec-sub">平台语气、事实锁定与引擎连接 —— 一次配置，次次生效。</p>
+          </div>
+        </div>
+
+        <div class="st-layout">
+          <!-- 左侧菜单 -->
+          <nav class="st-menu" id="st-menu">
+            <button type="button" class="active" data-panel="tone">平台调性</button>
+            <button type="button" data-panel="lock">事实锁定</button>
+            <button type="button" data-panel="engine">模型引擎</button>
+            <button type="button" data-panel="about">关于</button>
+          </nav>
+
+          <!-- 右侧面板 -->
+          <div class="st-panel">
+            <!-- 平台调性 -->
+            <section id="panel-tone">
+              <p class="notice" style="margin-bottom:22px">语气偏好会在生成时自动附加给引擎 —— 滑块越靠右，文案越放飞。</p>
+
+              <div class="st-group" data-platform="xiaohongshu">
+                <div class="st-group-head">
+                  <span class="plat-logo lg-xhs">红</span>
+                  <div>
+                    <h4>小红书 · 种草文</h4>
+                    <p class="st-group-desc">标题钩子 + 姐妹感排版的语气强度</p>
+                  </div>
+                </div>
+                <div class="tone-slider-row">
+                  <span class="ts-min">克制</span>
+                  <input type="range" class="tone-range" min="0" max="100" step="1" />
+                  <span class="ts-max">放飞</span>
+                  <span class="tone-value"></span>
+                </div>
+                <div class="tone-preview"></div>
+              </div>
+
+              <div class="st-group" data-platform="video">
+                <div class="st-group-head">
+                  <span class="plat-logo lg-dy">抖</span>
+                  <div>
+                    <h4>短视频 · 口播脚本</h4>
+                    <p class="st-group-desc">黄金 3 秒与口播节奏的语气强度</p>
+                  </div>
+                </div>
+                <div class="tone-slider-row">
+                  <span class="ts-min">克制</span>
+                  <input type="range" class="tone-range" min="0" max="100" step="1" />
+                  <span class="ts-max">放飞</span>
+                  <span class="tone-value"></span>
+                </div>
+                <div class="tone-preview"></div>
+              </div>
+
+              <div class="st-group" data-platform="moments">
+                <div class="st-group-head">
+                  <span class="plat-logo lg-wx">友</span>
+                  <div>
+                    <h4>朋友圈 · 海报配文</h4>
+                    <p class="st-group-desc">金句与短平快正文的语气强度</p>
+                  </div>
+                </div>
+                <div class="tone-slider-row">
+                  <span class="ts-min">克制</span>
+                  <input type="range" class="tone-range" min="0" max="100" step="1" />
+                  <span class="ts-max">放飞</span>
+                  <span class="tone-value"></span>
+                </div>
+                <div class="tone-preview"></div>
+              </div>
+            </section>
+
+            <!-- 事实锁定 -->
+            <section id="panel-lock" hidden>
+              <p class="notice" style="margin-bottom:22px">建议全部保持开启 —— 事实寸步不让。引擎强制项由后端保证，前端不可关闭。</p>
+
+              <div class="switch-row">
+                <div>
+                  <h4>强制事实点注入提示词</h4>
+                  <p>生成时将抽取的事实点注入提示词，约束模型只换表达、不换事实。</p>
+                </div>
+                <span class="sw-lock">引擎强制</span>
+                <label class="switch"><input type="checkbox" checked disabled /><span class="sw-track"></span></label>
+              </div>
+
+              <div class="switch-row">
+                <div>
+                  <h4>校验失败自动降级重生成</h4>
+                  <p>事实比对不通过时自动降级重试，不让偏差出门。</p>
+                </div>
+                <span class="sw-lock">引擎强制</span>
+                <label class="switch"><input type="checkbox" checked disabled /><span class="sw-track"></span></label>
+              </div>
+
+              <div class="switch-row">
+                <div>
+                  <h4>产出〖〗高亮标注</h4>
+                  <p>在结果页与校验报告中以朱砂色高亮事实点，关闭后全文按普通文本显示。</p>
+                </div>
+                <label class="switch"><input type="checkbox" id="sw-highlight" checked /><span class="sw-track"></span></label>
+              </div>
+
+              <div class="switch-row">
+                <div>
+                  <h4>敏感信息拦截 · Prompt 注入防护</h4>
+                  <p>拦截敏感信息与提示词注入攻击，保障生成安全。</p>
+                </div>
+                <span class="sw-lock">引擎强制</span>
+                <label class="switch"><input type="checkbox" checked disabled /><span class="sw-track"></span></label>
+              </div>
+            </section>
+
+            <!-- 模型引擎 -->
+            <section id="panel-engine" hidden>
+              <div class="engine-cards">
+                <div class="engine-card" id="engine-openai">
+                  <span class="engine-live-tag" hidden>当前</span>
+                  <h4>在线大模型 API</h4>
+                  <p>OpenAI 兼容接口（GPT-5-mini / LongCat），需在后端 .env 配置 API Key 后启用。</p>
+                </div>
+                <div class="engine-card" id="engine-local">
+                  <span class="engine-live-tag" hidden>当前</span>
+                  <h4>本地确定性引擎</h4>
+                  <p>无 Key 离线可用，基于风格模板的确定性产出，适合演示与联调。</p>
+                </div>
+              </div>
+
+              <div class="api-base-row">
+                <div class="ab-field">
+                  <label class="field-label" for="api-base">API 服务地址</label>
+                  <input type="url" id="api-base" placeholder="默认同源；独立打开时填 http://127.0.0.1:8000" />
+                </div>
+                <button class="btn btn-ghost btn-sm" id="api-save" type="button">保存</button>
+              </div>
+
+              <div class="conn-row">
+                <span class="conn-status" id="conn-status"><span class="health-dot"></span><span>未测试</span></span>
+                <button class="linklike" id="conn-test" type="button">测试连接</button>
+              </div>
+
+              <p class="notice" style="margin-top:20px">若前端以独立页面方式打开（不经后端 /demo 挂载），需在后端 .env 的 APP_CORS_ORIGINS 中加入当前页面源，否则浏览器会拦截跨域请求。</p>
+            </section>
+
+            <!-- 关于 -->
+            <section id="panel-about" hidden>
+              <div class="about-list">
+                <div class="ab-row"><span class="ab-k">产品</span><span class="ab-v">山河有文</span></div>
+                <div class="ab-row"><span class="ab-k">前端版本</span><span class="ab-v num">v1.0 · 宣纸朱砂版</span></div>
+                <div class="ab-row"><span class="ab-k">接口文档</span><span class="ab-v"><a id="about-docs" href="/docs" target="_blank" rel="noreferrer">/docs（Swagger UI）</a></span></div>
+                <div class="ab-row"><span class="ab-k">设计体系</span><span class="ab-v">新中式 · 宣纸朱砂 · 衬线宋体</span></div>
+                <div class="ab-row"><span class="ab-k">座右铭</span><span class="ab-v">风格可以放飞，事实寸步不让。</span></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="f-brand"><span class="seal" style="width:24px;height:24px;font-size:12px;border-radius:6px">山</span><span>山河有文</span></div>
+        <div>文旅 × AI ｜ 风格可以放飞，事实寸步不让</div>
+      </div>
+    </footer>
+  </body>
+</html>
