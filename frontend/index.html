@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工作台 · 山河有文</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./assets/wenan.css" />
+    <script src="./assets/wenan.js" defer></script>
+    <script src="./assets/workbench.js" defer></script>
+  </head>
+  <body>
+    <header id="topnav"></header>
+
+    <main class="page">
+      <!-- Hero -->
+      <section class="wb-hero">
+        <div class="wrap">
+          <div class="wb-eyebrow"><span class="line"></span><span>文旅 × AI · 工作台</span></div>
+          <h1 class="wb-title">让权威内容，<br /><em>说年轻人的话。</em></h1>
+          <p class="wb-sub">事实锁定的 AI 种草引擎 —— 一段官方讲解词，一键产出小红书 / 短视频 / 朋友圈三端内容。</p>
+        </div>
+      </section>
+
+      <!-- 工作区 -->
+      <section class="wrap">
+        <div class="wb-grid">
+          <!-- 左栏 · 输入 -->
+          <div class="card input-card">
+            <div class="input-card-head">
+              <h3>粘贴官方讲解词</h3>
+              <span class="lock-tag"><span class="lock-ico">鎖</span>事实锁定已开启</span>
+            </div>
+            <textarea
+              id="wb-text"
+              maxlength="12000"
+              placeholder="粘贴景区官方讲解词，支持最长 12,000 字，粘贴即用、无需改写……"
+            ></textarea>
+            <div class="text-tools">
+              <div class="tools-left">
+                <button class="linklike" id="wb-clear" type="button">清空</button>
+                <button class="linklike" id="wb-sample" type="button">填入示例文本</button>
+              </div>
+              <span class="char-count" id="wb-count"><b>0</b> / 12,000</span>
+            </div>
+            <div class="wb-instruction">
+              <label class="field-label" for="wb-instruction-input">补充要求<small>（选填）</small></label>
+              <input
+                type="text"
+                id="wb-instruction-input"
+                maxlength="800"
+                placeholder="例如：语气轻松活泼，突出周末出游"
+              />
+              <p class="input-note">设置页中的平台语气偏好，会在生成时自动附加给引擎。</p>
+            </div>
+            <p class="error-box" id="wb-error" hidden></p>
+          </div>
+
+          <!-- 右栏 · 平台与动作 -->
+          <aside class="side-stack">
+            <div class="side-title">选择产出平台</div>
+
+            <div class="card card-hover plat-check">
+              <span class="plat-logo lg-xhs">红</span>
+              <div>
+                <h4>小红书 · 种草文</h4>
+                <p>标题钩子 + 姐妹感排版 + 话题标签 + 封面建议</p>
+              </div>
+              <span class="plat-fixed">✓ 已锁定</span>
+            </div>
+
+            <div class="card card-hover plat-check">
+              <span class="plat-logo lg-dy">抖</span>
+              <div>
+                <h4>短视频 · 口播脚本</h4>
+                <p>黄金 3 秒开场 + ≥5 组分镜 + 时长控制</p>
+              </div>
+              <span class="plat-fixed">✓ 已锁定</span>
+            </div>
+
+            <div class="card card-hover plat-check">
+              <span class="plat-logo lg-wx">友</span>
+              <div>
+                <h4>朋友圈 · 海报配文</h4>
+                <p>双金句 + 九宫格拍摄方案 + 发布贴士</p>
+              </div>
+              <span class="plat-fixed">✓ 已锁定</span>
+            </div>
+
+            <div class="card factlock-note">
+              <span class="lock-ico-lg">鎖</span>
+              <div>
+                <h4>事实锁定</h4>
+                <p>年代 / 人物 / 数字等 9 类事实点自动抽取、逐条校验——风格可以放飞，事实寸步不让。</p>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="wb-submit" type="button">一键生成 · 三端齐发 →</button>
+            <p class="input-note">当前版本固定三端齐发；生成耗时取决于引擎模式，本地引擎通常数秒内完成。</p>
+          </aside>
+        </div>
+
+        <!-- 指标条 -->
+        <div class="wb-metrics">
+          <div><div class="t">输入 INPUT</div><div class="v">官方讲解词 · 粘贴即用</div></div>
+          <div><div class="t">引擎 ENGINE</div><div class="v">AI 种草引擎 · 事实锁定</div></div>
+          <div><div class="t">输出 OUTPUT</div><div class="v">三端成品 · 即拿即用</div></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 生成中遮罩 -->
+    <div class="gen-overlay" id="gen-overlay" role="status" aria-live="polite">
+      <div class="gen-box">
+        <div class="seal seal-xl">種</div>
+        <div class="gen-title">正在生成三端内容</div>
+        <div class="gen-step" id="gen-step">正在抽取事实点…</div>
+        <div class="gen-bar"><i></i></div>
+        <div class="gen-hint">风格可以放飞，事实寸步不让</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="f-brand"><span class="seal" style="width:24px;height:24px;font-size:12px;border-radius:6px">山</span><span>山河有文</span></div>
+        <div>文旅 × AI ｜ 风格可以放飞，事实寸步不让</div>
+      </div>
+    </footer>
+  </body>
+</html>
