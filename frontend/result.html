@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成结果 · 山河有文</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./assets/wenan.css" />
+    <script src="./assets/wenan.js" defer></script>
+    <script src="./assets/result.js" defer></script>
+  </head>
+  <body>
+    <header id="topnav"></header>
+
+    <main class="page">
+      <section class="wrap" style="padding-top: 44px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+          <a class="backlink" href="index.html">← 返回工作台</a>
+          <div class="rs-actions">
+            <button class="btn btn-ghost btn-sm" id="rs-copy-all" type="button">全部复制</button>
+            <a class="btn btn-primary btn-sm" id="rs-review-link" href="#">查看校验报告</a>
+          </div>
+        </div>
+
+        <div class="sec-head" style="margin-top:34px;margin-bottom:0">
+          <div class="seal seal-lg">書</div>
+          <div>
+            <div class="sec-kicker">OUTPUTS · 三端产出</div>
+            <h2 class="sec-title">一次生成，三种平台原生语感</h2>
+          </div>
+        </div>
+
+        <div class="meta-strip" id="rs-meta" hidden></div>
+
+        <div class="rs-tabs" id="rs-tabs" hidden></div>
+
+        <div id="rs-outputs"></div>
+
+        <div class="loading-block" id="rs-loading">
+          <div class="seal seal-lg">書</div>
+          <p>正在读取生成结果…</p>
+        </div>
+        <p class="error-box" id="rs-error" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="f-brand"><span class="seal" style="width:24px;height:24px;font-size:12px;border-radius:6px">山</span><span>山河有文</span></div>
+        <div>文旅 × AI ｜ 风格可以放飞，事实寸步不让</div>
+      </div>
+    </footer>
+  </body>
+</html>
