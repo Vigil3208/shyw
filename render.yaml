@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: shanhe-youwen
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn wenan_backend.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_HOST
+        value: 0.0.0.0
+      - key: APP_PORT
+        value: "8000"
+      - key: APP_MODEL_MODE
+        value: openai
+      - key: APP_CORS_ORIGINS
+        value: "*"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_BASE_URL
+        sync: false
+      - key: OPENAI_MODEL
+        sync: false
