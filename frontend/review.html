@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事实校验报告 · 山河有文</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./assets/wenan.css" />
+    <script src="./assets/wenan.js" defer></script>
+    <script src="./assets/review.js" defer></script>
+  </head>
+  <body class="review-body">
+    <header id="topnav"></header>
+
+    <main class="page">
+      <section class="wrap" style="padding-top: 40px; position: relative">
+        <span class="v-deco" style="right:2%;top:8%">风格可以放飞，事实寸步不让</span>
+
+        <a class="backlink" id="rv-backlink" href="#">← 返回生成结果</a>
+
+        <!-- 页头 -->
+        <div class="rv-hero">
+          <div style="display:flex;align-items:flex-start;gap:22px">
+            <div class="seal seal-lg">鎖</div>
+            <div>
+              <div class="rv-kicker">FACT LOCK · 核心壁垒</div>
+              <h1 class="rv-title">换表达，不换事实</h1>
+              <p class="rv-sub">机器先逐条比对，人再一眼终审 —— 把「AI 幻觉」关进笼子。</p>
+            </div>
+          </div>
+          <div class="rv-status-row" id="rv-status"></div>
+        </div>
+
+        <!-- 四步流程 -->
+        <div class="rv-steps">
+          <div class="rv-step done">
+            <div class="stp-num">STEP 01</div>
+            <h3>识别</h3>
+            <p>规则 + 大模型双路抽取：年代 / 朝代 / 人名 / 地名 / 机构 / 数字 / 面积 / 票价 / 开放时间，共 9 类事实点。</p>
+          </div>
+          <div class="rv-step done">
+            <div class="stp-num">STEP 02</div>
+            <h3>约束</h3>
+            <p>事实点注入提示词，强制模型「只换表达、不换事实」。</p>
+          </div>
+          <div class="rv-step done">
+            <div class="stp-num">STEP 03</div>
+            <h3>校验</h3>
+            <p>产出与原文事实点逐条程序化比对；校验不过自动降级重生成，不让偏差出门。</p>
+          </div>
+          <div class="rv-step current">
+            <div class="stp-num">STEP 04</div>
+            <h3>复核</h3>
+            <p>事实点以〖〗高亮标注，随附逐条校验报告，人工核对有据可依。</p>
+          </div>
+        </div>
+
+        <!-- 事实点清单 -->
+        <div class="rv-sec">
+          <h2 class="rv-sec-title">事实点清单</h2>
+          <p class="rv-sec-sub">从原文抽取的全部事实点 —— 每一条都是不可逾越的红线。</p>
+          <div class="fact-table-wrap">
+            <table class="fact-table">
+              <thead>
+                <tr><th>类型</th><th>原文事实</th><th>标准化值</th><th>关键性</th></tr>
+              </thead>
+              <tbody id="rv-fact-rows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 三端比对 -->
+        <div class="rv-sec">
+          <h2 class="rv-sec-title">三端比对</h2>
+          <p class="rv-sec-sub">各平台产出与事实点的逐条比对结果。</p>
+          <div id="rv-platforms"></div>
+        </div>
+
+        <!-- 人工复核 -->
+        <div class="rv-review-panel">
+          <h3>人工复核</h3>
+          <p class="rp-note">请对照左侧事实点逐一确认，全部勾选后方可发布。</p>
+          <div class="rv-check-grid" id="rv-checks"></div>
+          <div class="rv-review-actions">
+            <button class="btn btn-cinnabar" id="rv-approve" type="button" disabled>确认无误，允许发布</button>
+            <a class="linklike" id="rv-back-result" href="#" style="color:rgba(238,242,243,.6)">退回重新生成</a>
+            <span class="rv-progress-text" id="rv-progress">0 / 0 已确认</span>
+          </div>
+          <div class="rv-approved" id="rv-approved">
+            <div class="seal seal-lg" style="margin:0 auto">核</div>
+            <p>已复核 · 允许发布</p>
+          </div>
+        </div>
+
+        <p class="rv-slogan">风格可以放飞，<em>事实寸步不让。</em></p>
+        <p class="rv-note">每一条朱砂色高亮背后，都是一次机器比对 + 一道人工终审。</p>
+
+        <div class="loading-block" id="rv-loading">
+          <div class="seal seal-lg">鎖</div>
+          <p>正在读取校验报告…</p>
+        </div>
+        <p class="error-box" id="rv-error" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="f-brand"><span class="seal" style="width:24px;height:24px;font-size:12px;border-radius:6px">山</span><span>山河有文</span></div>
+        <div>文旅 × AI ｜ 风格可以放飞，事实寸步不让</div>
+      </div>
+    </footer>
+  </body>
+</html>
